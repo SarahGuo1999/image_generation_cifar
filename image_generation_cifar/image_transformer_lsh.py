@@ -273,8 +273,8 @@ class DecoderLayer(nn.Module):
             # dropout = 0.1,
             # causal = True,
             # use_full_attn=False)True, K=128)
-        # self.attn = QuantizedQKLSHSelfAttention(dim=hparams.hidden_size, causal = True, use_full_attn=False, K=16)
-        self.attn = Attn(hparams)
+        self.attn = QuantizedQKLSHSelfAttention(dim=hparams.hidden_size, causal = True, use_full_attn=False, K=16)
+        # self.attn = Attn(hparams)
         self.hparams = hparams
         self.dropout = nn.Dropout(p=hparams.dropout)
         self.layernorm_attn = nn.LayerNorm([self.hparams.hidden_size], eps=1e-6, elementwise_affine=True)
